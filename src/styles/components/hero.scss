@@ -1,0 +1,15 @@
+.Hero {
+
+  &__people-chips-icon {
+    width: 22rem;
+    height: auto;
+
+    @include media('md-up') {
+      width: 30rem;
+    }
+
+    @include media('lg-up') {
+      width: 48rem;
+    }
+  }
+}

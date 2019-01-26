@@ -1,0 +1,13 @@
+.StepsFlow {
+  > p {
+    @extend .text-unset;
+  }
+  &__icon-couch-chips {
+    width: 100%;
+    height: auto;
+
+    @include media('lg-up') {
+      width: 70vw;
+    }
+  }
+}
