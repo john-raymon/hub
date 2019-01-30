@@ -1,4 +1,8 @@
 .Cart {
   overflow-y: scroll;
   overflow-x: hidden;
+
+  &__list-item-image-container {
+    height: auto;
+  }
 }

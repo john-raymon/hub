@@ -3380,6 +3380,9 @@ li {
 .maxw57 {
   max-width: 57rem; }
 
+.maxw60 {
+  max-width: 60rem; }
+
 .mtn2 {
   margin-top: -2rem; }
 
@@ -3399,12 +3402,31 @@ li {
   text-decoration: none;
   color: inherit; }
 
+.border-top {
+  border-top-width: 2px;
+  border-style: solid; }
+
+.no-letter-spacing {
+  letter-spacing: 0; }
+
+.bg-color-none {
+  background: none; }
+
 @font-face {
   font-family: 'Cool';
   src: url("assets/fonts/coolvetica_rg-webfont.eot");
   src: url("assets/fonts/coolvetica_rg-webfont.eot?#iefix") format("embedded-opentype"), url("assets/fonts/coolvetica_rg-webfont.woff2") format("woff2"), url("assets/fonts/coolvetica_rg-webfont.woff") format("woff"), url("assets/fonts/coolvetica_rg-webfont.ttf") format("truetype"), url("assets/fonts/coolvetica_rg-webfont.svg#coolveticaregular") format("svg");
   font-weight: normal;
   font-style: normal; }
+
+.regular-text {
+  font-size: 0.80rem;
+  letter-spacing: 0.25rem;
+  font-family: 'Cool';
+  text-transform: uppercase; }
+  @media (min-width: 832px) {
+    .regular-text {
+      font-size: 1.25rem; } }
 
 .nav-link-text {
   font-size: 0.80rem;
@@ -3459,6 +3481,12 @@ li {
       font-size: 1.4rem;
       line-height: 1.5rem; } }
 
+a {
+  text-decoration: none; }
+
+button {
+  outline: none; }
+
 .Button__container {
   border: 0.1875rem solid #6C63FF;
   padding: 0.3125rem;
@@ -3467,6 +3495,11 @@ li {
   .Button__container--all-yellow {
     border: 0.1875rem solid #fadd2f;
     color: #6C63FF; }
+  .Button__container--all-gray {
+    border: 0.1875rem solid gray;
+    color: gray;
+    padding-left: 0.50rem;
+    padding-right: 0.50rem; }
 
 .pace {
   -webkit-pointer-events: none;
@@ -3504,6 +3537,10 @@ li {
 #main {
   min-height: calc(100vh - 300px); }
 
+.CloseIcon {
+  width: 1.5rem;
+  height: 1.5rem; }
+
 .Hero__people-chips-icon {
   width: 22rem;
   height: auto; }
@@ -3533,3 +3570,9 @@ li {
 .Cart {
   overflow-y: scroll;
   overflow-x: hidden; }
+  .Cart__list-item-image-container {
+    height: auto; }
+
+.Collections__image-container {
+  width: 16rem;
+  height: auto; }

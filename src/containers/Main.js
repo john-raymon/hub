@@ -3,6 +3,8 @@ import {
   Route
 } from "react-router-dom";
 
+import Collections from './../views/Collections'
+
 import Cart from './Cart'
 
 export default class Main extends Component {
@@ -13,6 +15,14 @@ export default class Main extends Component {
     return (
       <div id="main">
         <Route path="/cart" render={(props) => <Cart client={this.props.client} {...this.props} {...props} />} />
+
+        {
+          this.props.initProducts &&
+          (<Collections collections={this.props.collections} {...this.props}/>)
+        }
+        {
+          this.props.productsError && (<p>There was a problem loading the products :(</p>)
+        }
       </div>
     )
   }

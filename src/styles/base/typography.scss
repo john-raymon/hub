@@ -11,6 +11,17 @@
 
 }
 
+.regular-text {
+  font-size: 0.80rem;
+  letter-spacing: 0.25rem;
+  font-family: 'Cool';
+  text-transform: uppercase;
+
+  @include media('md-up') {
+    font-size: 1.25rem;
+  }
+}
+
 .nav-link-text {
   font-size: 0.80rem;
   letter-spacing: 0.25rem;
