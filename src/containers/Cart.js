@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import Velocity from 'velocity-animate'
 import { Link } from 'react-router-dom'
 
+import ProductDetail from './ProductDetail'
 import CartItem from './CartItem'
 import Loading from './../views/Loading'
 import CloseIcon from './../views/CloseIcon'
@@ -72,15 +73,15 @@ export default class Cart extends Component {
               </div>
               <div className="flex flex-row items-center px2 py1 bg-color-white-wash justify-center items-center box-shadow">
               <p className="nav-link-text color-black">
-                <span className="bold">Total: </span>
-                 ---
+                <span className="">Total: </span>
+                 USD ${this.props.checkout.totalPrice}
               </p>
               </div>
             </div>
 
             <div className={'relative maxw60 w100 mxauto px2 ' +  (lineItems.length > 0 && 'py2')} style={{height: "auto", minHeight:"37rem"}}>
               { lineItems }
-              { lineItems.length === 0 && (
+              { lineItems.length === 0 ? (
                 <Fragment>
                   <Link to="/">
                     <p className="px2 mt3 text-center nav-link-text color-black">
@@ -95,7 +96,10 @@ export default class Cart extends Component {
                     </div>
                   </Link>
                 </Fragment>
-              )
+              ) :``
+              (<p className="nav-link-text text-center color-black-wash px2 py2 border-top border-color-black-wash">
+                Shipping and Taxes will be calculated during checkout.
+              </p>)
             }
             </div>
             <a href={`${this.props.checkout.webUrl}`} className="no-decoration" onClick={this.onCheckoutClick}>

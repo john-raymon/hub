@@ -27,6 +27,7 @@ class App extends Component {
     this.createCheckout = this.createCheckout.bind(this)
     this.removeCartItem = this.removeCartItem.bind(this)
     this.updateCartItem = this.updateCartItem.bind(this)
+    this.fetchProduct = this.fetchProduct.bind(this)
   }
   componentDidMount() {
     localForage.getItem('HUB_CHECKOUT_ID').then((value) => {
@@ -121,6 +122,12 @@ class App extends Component {
     })
   }
 
+  fetchProduct(id) {
+    return this.props.client.product.fetch(id).then((product) => {
+      return product
+    })
+  }
+
   render() {
     return (
       <div>
@@ -138,6 +145,7 @@ class App extends Component {
               addItemToCart={this.addItemToCart}
               removeCartItem={this.removeCartItem}
               updateCartItem={this.updateCartItem}
+              fetchProduct={this.fetchProduct}
             />)
         }
         {

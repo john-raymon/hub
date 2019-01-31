@@ -15,7 +15,15 @@ export default class Main extends Component {
     return (
       <div id="main">
         <Route path="/cart" render={(props) => <Cart client={this.props.client} {...this.props} {...props} />} />
-
+        <Route path="/chip/:id"
+          render={
+            (props) =>
+            <ProductDetail
+              client={this.props.client}
+              {...this.props}
+              {...props} />
+           }
+        />
         {
           this.props.initProducts &&
           (<Collections collections={this.props.collections} {...this.props}/>)
