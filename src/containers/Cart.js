@@ -92,11 +92,11 @@ export default class Cart extends Component {
                       </span>
                     </p>
                     <div className="w100 mt2 maxw30 mxauto px1">
-                      <img src={cartImage} width="100%" height="auto" />
+                      <img src={cartImage} alt="" width="100%" height="auto" />
                     </div>
                   </Link>
                 </Fragment>
-              ) :``
+              ) :
               (<p className="nav-link-text text-center color-black-wash px2 py2 border-top border-color-black-wash">
                 Shipping and Taxes will be calculated during checkout.
               </p>)

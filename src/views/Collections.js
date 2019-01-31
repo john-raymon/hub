@@ -13,7 +13,7 @@ export default ({ collections:_collections , addItemToCart}) => {
         <div className="flex flex-row items-center flex-start overflow-y-scroll mb3 pb4">
         {
           collection.products.map((product, key) => {
-            return <Product product={product} addItemToCart={addItemToCart} />
+            return <Product key={key} product={product} addItemToCart={addItemToCart} />
           })
         }
         </div>

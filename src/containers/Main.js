@@ -6,6 +6,7 @@ import {
 import Collections from './../views/Collections'
 
 import Cart from './Cart'
+import ProductDetail from './ProductDetail'
 
 export default class Main extends Component {
   constructor(props) {
@@ -15,11 +16,12 @@ export default class Main extends Component {
     return (
       <div id="main">
         <Route path="/cart" render={(props) => <Cart client={this.props.client} {...this.props} {...props} />} />
-        <Route path="/chip/:id"
+        <Route path="/chips/:productId/:variantId"
           render={
             (props) =>
             <ProductDetail
               client={this.props.client}
+              fetchProduct={this.props.fetchProduct}
               {...this.props}
               {...props} />
            }

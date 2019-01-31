@@ -3412,6 +3412,9 @@ li {
 .bg-color-none {
   background: none; }
 
+.box-shadow {
+  box-shadow: 0px 8px 20px #8f8f8f33; }
+
 @font-face {
   font-family: 'Cool';
   src: url("assets/fonts/coolvetica_rg-webfont.eot");

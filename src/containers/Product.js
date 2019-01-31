@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react'
 
+import { Link } from 'react-router-dom'
+
 class Product extends Component {
   constructor(props) {
     super(props)
@@ -7,7 +9,7 @@ class Product extends Component {
     this.onSubtract = this.onSubtract.bind(this)
     this.addItemToCart = this.addItemToCart.bind(this)
     this.state = {
-      quantity: 0
+      quantity: 1
     }
   }
   onAdd(){
@@ -37,7 +39,7 @@ class Product extends Component {
       }).then((res) => {
         alert('Added to your cart!')
         this.setState({
-          quantity: 0
+          quantity: 1
         })
       }).catch((error) => {
         alert('Oops there was an error when attempting to add items to the your cart')
@@ -51,9 +53,11 @@ class Product extends Component {
     })
     return (
       <div className="flex flex-col items-center justify-center p1 mr2">
-        <div className="Collections__image-container">
-          <img src={ regularProduct.image.src } width="100%" height="auto" />
-        </div>
+        <Link to={`/chips/${product.id}/${regularProduct.id}`}>
+          <div className="Collections__image-container">
+            <img src={ regularProduct.image.src } width="100%" height="auto" />
+          </div>
+        </Link>
         <div className="Collections__controls-container maxw15 mt1 mxauto">
           <div class="flex flex-row items-center justify-center small-text py_5 color-gray no-letter-spacing">
             <button className="pointer color-gray-wash px2 small-text no-letter-spacing" onClick={this.onSubtract}>
