@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import Velocity from 'velocity-animate'
 import { Link } from 'react-router-dom'
 
+import CartItem from './CartItem'
 import Loading from './../views/Loading'
 import CloseIcon from './../views/CloseIcon'
 
@@ -48,30 +49,7 @@ export default class Cart extends Component {
 
    let lineItems = this.props.checkout.lineItems.map((item, key) => {
       return (
-        <div className="flex flex-row items-center py1">
-          <div className="Cart__list-item-image-container col col-6 md:col-4">
-            <img src={item.variant.image.src} width="100%" height="auto"/>
-          </div>
-          <div className="flex flex-col col col-6 md:col-8 justify-center">
-            <div class="flex flex-row items-center justify-center small-text py_5 color-gray no-letter-spacing">
-              <button className="bg-color-none pointer color-gray-wash px2 small-text no-letter-spacing" onClick={this.onSubtract}>
-                -
-              </button>
-              <span class="px_25 regular-text color-gray-wash no-letter-spacing">
-                { item.quantity }
-              </span>
-              <button className="bg-color-none pointer color-gray-wash px2 small-text no-letter-spacing" onClick={this.onAdd}>
-                +
-              </button>
-            </div>
-            <p class="regular-text color-gray-wash text-center col-10 py_25 mxauto">
-              { item.title }
-            </p>
-            <button className="Button__container Button__container--all-gray uppercase nav-link-text mxauto my_5 bg-color-none">
-              remove from cart
-            </button>
-          </div>
-        </div>
+        <CartItem key={key} item={item} />
       )})
 
     return (
@@ -90,7 +68,7 @@ export default class Cart extends Component {
               </Link>
             </div>
 
-            <div className="relative maxw60 w100 mxauto px2 mt2" style={{height: "auto", minHeight:"100vh"}}>
+            <div className="relative maxw60 w100 mxauto px2 pt1 pb4" style={{height: "auto", minHeight:"100vh"}}>
               { lineItems }
             </div>
             <a href={`${this.props.checkout.webUrl}`} className="no-decoration" onClick={this.onCheckoutClick}>

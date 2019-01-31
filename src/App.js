@@ -25,7 +25,7 @@ class App extends Component {
     this.addItemToCart = this.addItemToCart.bind(this)
     this.fetchCheckout = this.fetchCheckout.bind(this)
     this.createCheckout = this.createCheckout.bind(this)
-
+    this.removeCartItem = this.removeCartItem.bind(this)
   }
   componentDidMount() {
     localForage.getItem('HUB_CHECKOUT_ID').then((value) => {
@@ -97,6 +97,9 @@ class App extends Component {
         checkout
       })
     });
+  }
+  removeCartItem(lineItem) {
+
   }
   render() {
     return (
