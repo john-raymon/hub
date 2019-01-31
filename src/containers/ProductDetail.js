@@ -1,5 +1,7 @@
 import React, {Component, Fragment} from 'react'
 
+import Product from './Product'
+
 class ProductDetail extends Component {
   constructor(props) {
     super(props)
@@ -72,14 +74,16 @@ class ProductDetail extends Component {
   render() {
     return (
       <Fragment>
-       {this.state.loading ?
-        (<p>Loading</p>) :
+       {(!this.state.loading && this.state.product) &&
         (
-          <div class="ProductDetail">
-            Hello world
+          <div class="ProductDetail fixed z3 t0 l0 w100 bg-color-white-wash">
+            <div className='relative maxw60 w100 mxauto px2' style={{height: "auto", minHeight:"37rem"}}>
+              <Product product={this.state.product} addItemToCart={this.props.addItemToCart} />
+            </div>
           </div>
         )
         }
+        {this.state.loading && (<p>Loading</p>)}
       </Fragment>
     )
   }
