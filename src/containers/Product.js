@@ -34,6 +34,13 @@ class Product extends Component {
       this.props.addItemToCart({
         variantId: regularProduct.id,
         quantity: this.state.quantity
+      }).then((res) => {
+        alert('Added to your cart!')
+        this.setState({
+          quantity: 0
+        })
+      }).catch((error) => {
+        alert('Oops there was an error when attempting to add items to the your cart')
       })
     }
   }

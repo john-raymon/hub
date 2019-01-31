@@ -26,6 +26,7 @@ class App extends Component {
     this.fetchCheckout = this.fetchCheckout.bind(this)
     this.createCheckout = this.createCheckout.bind(this)
     this.removeCartItem = this.removeCartItem.bind(this)
+    this.updateCartItem = this.updateCartItem.bind(this)
   }
   componentDidMount() {
     localForage.getItem('HUB_CHECKOUT_ID').then((value) => {
@@ -88,19 +89,38 @@ class App extends Component {
       this.setState({checkout: {}, error: true, init: false })
     });
   }
+
   addItemToCart(lineItem) {
     // Add an item to the checkout
-    this.props.client.checkout.addLineItems(this.state.checkout.id, lineItem).then((checkout) => {
+    return this.props.client.checkout.addLineItems(this.state.checkout.id, lineItem).then((checkout) => {
       // Do something with the updated checkout
       console.log(checkout.lineItems); // Array with one additional line
       this.setState({
         checkout
       })
+    }, (error) => error);
+  }
+
+  removeCartItem(lineItem) {
+    // Remove an item from cart then update checkout state
+    this.props.client.checkout.removeLineItems(this.state.checkout.id, lineItem).then((checkout) => {
+      console.log(`After removing ${lineItem} the checkout is now`, checkout)
+      this.setState({
+        checkout
+      })
     });
   }
-  removeCartItem(lineItem) {
 
+  updateCartItem(lineItem) {
+    // Update an item from the cart then update the checkout state
+    this.props.client.checkout.updateLineItems(this.state.checkout.id, [lineItem]).then(checkout => {
+      console.log(`After updating the ${lineItem} the checkout is now`, checkout)
+      this.setState({
+        checkout
+      })
+    })
   }
+
   render() {
     return (
       <div>
@@ -112,7 +132,13 @@ class App extends Component {
             </Fragment>)
         }
         {
-          this.state.init && (<Main {...this.state} addItemToCart={this.addItemToCart} />)
+          this.state.init && (
+            <Main
+              {...this.state}
+              addItemToCart={this.addItemToCart}
+              removeCartItem={this.removeCartItem}
+              updateCartItem={this.updateCartItem}
+            />)
         }
         {
           (!this.state.init && !this.state.error) && (<p> Loading </p>)

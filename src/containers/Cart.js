@@ -6,6 +6,8 @@ import CartItem from './CartItem'
 import Loading from './../views/Loading'
 import CloseIcon from './../views/CloseIcon'
 
+import cartImage from './../assets/images/cart-image.png'
+
 export default class Cart extends Component {
 
   constructor(props) {
@@ -49,7 +51,7 @@ export default class Cart extends Component {
 
    let lineItems = this.props.checkout.lineItems.map((item, key) => {
       return (
-        <CartItem key={key} item={item} />
+        <CartItem key={key} item={item} removeCartItem={this.props.removeCartItem} updateCartItem={this.props.updateCartItem} />
       )})
 
     return (
@@ -57,19 +59,44 @@ export default class Cart extends Component {
         {
           this.props.init ?
           (<Fragment>
-            <div className="sticky t0 maxw60 mxauto w100 px2 pt3 flex flex-row items-center justify-between z1">
-              <p className="color-black nav-link-text nav-link-text--larger">
-                Shopping Cart
+            <div className="sticky t0 mxauto w100 z1">
+              <div className="flex flex-row items-center px2 py1 justify-between bg-color-yellow">
+                <p className="color-black nav-link-text nav-link-text--larger">
+                  Shopping Cart
+                </p>
+                <Link to="/">
+                  <div className="CloseIcon">
+                    <CloseIcon />
+                  </div>
+                </Link>
+              </div>
+              <div className="flex flex-row items-center px2 py1 bg-color-white-wash justify-center items-center box-shadow">
+              <p className="nav-link-text color-black">
+                <span className="bold">Total: </span>
+                 ---
               </p>
-              <Link to="/">
-                <div className="CloseIcon">
-                  <CloseIcon />
-                </div>
-              </Link>
+              </div>
             </div>
 
-            <div className="relative maxw60 w100 mxauto px2 pt1 pb4" style={{height: "auto", minHeight:"100vh"}}>
+            <div className={'relative maxw60 w100 mxauto px2 ' +  (lineItems.length > 0 && 'py2')} style={{height: "auto", minHeight:"37rem"}}>
               { lineItems }
+              { lineItems.length === 0 && (
+                <Fragment>
+                  <Link to="/">
+                    <p className="px2 mt3 text-center nav-link-text color-black">
+                      Your cart is empty.
+                      <br />
+                      <span className="color-purple text-center">
+                        Start discovering.
+                      </span>
+                    </p>
+                    <div className="w100 mt2 maxw30 mxauto px1">
+                      <img src={cartImage} width="100%" height="auto" />
+                    </div>
+                  </Link>
+                </Fragment>
+              )
+            }
             </div>
             <a href={`${this.props.checkout.webUrl}`} className="no-decoration" onClick={this.onCheckoutClick}>
               <div className="sticky w100 py2 px1 bg-color-black color-yellow text-center b0 pointer">
